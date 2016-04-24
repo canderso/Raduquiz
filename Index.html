@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Raduquiz</title>
-  <meta name="generator" content="Google Web Designer 1.5.4.0113">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
   <style type="text/css" id="gwd-text-style">
     p {
       margin: 0px;
@@ -29,76 +27,127 @@
     body {
       transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
       transform-style: preserve-3d;
-      background-image: none;
-      background-color: rgb(255, 84, 76);
       font-family: 'Open Sans', sans-serif;
-      color: white;
-    }
-    
-    .header {
-      margin-top: 50px;
-    }
-    
-    .header-logo {
-      width: 173px;
-      height: 91px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    p.header-text {
-      margin-top: 50px;
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
-      color: white;
-      text-transform: uppercase;
-    }
-        
-    .content {
-      margin-right: 50px;
-      margin-left: 50px;
-    }
-    
-    p.quote {
-      font-family: 'Courier';
-      text-transform: uppercase;
+      background-color:#AFAFAF;
+      font-weight: 100;
       color: white;
     }
+
+h1{
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #303030;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #303030;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+.mission {
+    margin-top: 50px;
+}
   </style>
+  
+    <script type="text/javascript">
+      var deadline;
+      var clock;
+      var daysSpan;
+      var hoursSpan;
+      var minutesSpan;
+      var secondsSpan;  
+      var timeinterval;
+      
+window.onload = function() {
+  deadline = new Date(2016, 4, 13, 8, 35, 0, 0);
+  clock = document.getElementById("clockdiv");
+  daysSpan = document.getElementById("days");
+  hoursSpan = document.getElementById("hours");
+  minutesSpan = document.getElementById("minutes");
+  secondsSpan = document.getElementById("seconds");
+  timeinterval = setInterval(updateClock, 1000);    
+      };
+    
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function updateClock() {
+  var t = getTimeRemaining(deadline);
+
+  daysSpan.innerHTML = t.days;
+  hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+  minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+  secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+  if (t.total <= 0) {
+      clearInterval(timeinterval);
+  }  
+}  
+  </script>
 </head>
 
-<body style="">
-  <div class="header">
-  	<div class="header-logo" >
-	  <img src="assets/logo.png"/>
-  	</div>
-    <p class="header-text">The quest to unlock your bachelor week-end :-)</p>
+<body>
+<h1>EVG Countdown Bro</h1>
+<div id="clockdiv">
+  <div>
+    <span id="days" class="days">00</span>
+    <div class="smalltext">Days</div>
   </div>
-  
-  <table class-"content">
-    <tr>
-      <td rowspan=3><img src="assets/illu.png"/></td>
-      <td>
-       <p class="quote">« R&eacute;serve ta soir&eacute;e, cocotte, Au chant du coq, tu passes &agrave; la casserole ! »</p>        
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>
-          Dans quelle ville se déroule l’histoire du film “The Mask” sorti en 1994, basé sur les tribulations de Stanley Ipkiss “Big Head”, et adapté de la série de Comics du même nom sortie pour la première fois en 1991 ?
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-       <form>
-          <input type="text" name="answer"><br>
-      </td>
-    </tr>
-  </table>
-         
-  </body>
+  <div>
+    <span id="hours" class="hours">00</span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span id="minutes" class="minutes">00</span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span id="seconds" class="seconds">00</span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+
+<div class="mission">
+    <span>
+        <p>bla bla bla, mettre ici le texte de sa mission: son point de rdv, les dates pour qu'il pose ses jours, et un lien pour choper ses billets d'avion.</p>
+    </span>
+</div>
+</body>
 
 </html>
