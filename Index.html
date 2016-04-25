@@ -29,7 +29,12 @@
       transform-style: preserve-3d;
       font-family: 'Open Sans', sans-serif;
       text-align: center;
-      background-color:#AFAFAF;
+      /* background-color:#AFAFAF;*/
+      background: #2B1B17; /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(#2B1B17, black); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(#2B1B17, black); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(#2B1B17, black); /* For Firefox 3.6 to 15 */
+      background: linear-gradient(#2B1B17, black); /* Standard syntax */
       font-weight: 100;
       color: white;
     }
@@ -50,26 +55,32 @@ h1{
 }
 
 #clockdiv > div{
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 3px;
-    background: #303030;
+    /* background: #303030; */
     display: inline-block;
 }
 
 #clockdiv div > span{
     padding: 15px;
     border-radius: 3px;
-    background: #303030;
+    /*background: #303030;*/
+    color: red;
     display: inline-block;
 }
 
 .smalltext{
     padding-top: 5px;
     font-size: 16px;
+    text-transform: uppercase;
 }
 
 .mission {
     margin-top: 50px;
+    margin-left: 100px;
+    text-align: left;
 }
   </style>
   
@@ -123,7 +134,7 @@ function updateClock() {
 </head>
 
 <body>
-<h1>EVG Countdown Bro</h1>
+<h1>Fred's Bro Countdown</h1>
 <div id="clockdiv">
   <div>
     <span id="days" class="days">00</span>
@@ -144,10 +155,19 @@ function updateClock() {
 </div>
 
 <div class="mission">
-    <span>
-        <p>bla bla bla, mettre ici le texte de sa mission: son point de rdv, les dates pour qu'il pose ses jours, et un lien pour choper ses billets d'avion.</p>
-    </span>
+    <p>
+      Votre mission, si toute fois vous l'acceptez, est de :
+    </p>
+    <ul>
+      <li>poser ton vendredi 13 et ton lundi 16 mai,</li>
+      <li>prendre un vol vendredi matin pour rejoindre vos contacts qui vous attendront sur place.</li>
+    </ul>
+    <p>
+      De plus amples informations vous serons communiquées à 48h du départ.
+    </p>
+    <p>
+      Comme toujours, si jamais vous ou un membre de votre équipe venait à se faire prendre ou tuer, la division niera toute part à vos actions.
+    </p>
 </div>
 </body>
-
 </html>
